@@ -1,0 +1,36 @@
+Date,Description,Category,Amount,Type
+2024-01-03,Office Supplies - Staples,Office,120.50,Expense
+2024-01-05,Client Payment - Acme Ltd,,5000.00,Income
+2024-01-07,Software Subscription - Adobe,Software,54.99,Expense
+2024-01-10,Travel - Train to London,Travel,87.20,Expense
+2024-01-12,Client Payment - Beta Corp,Income,3200.00,Income
+2024-01-15,Rent - January,Rent,1500.00,Expense
+2024-01-18,office supplies - pens and paper,Office,34.75,Expense
+2024-01-20,Client Payment - Gamma Ltd,,2800.00,Income
+2024-01-22,Utilities - Electricity,Utilities,210.30,Expense
+2024-01-25,Software Subscription - Xero,Software,35.00,Expense
+2024-02-01,Client Payment - Delta Inc,,4100.00,Income
+2024-02-03,Office Supplies - Printer Ink,Office,89.99,Expense
+2024-02-05,Travel - Client Visit Manchester,Travel,145.60,Expense
+2024-02-08,Rent - February,Rent,1500.00,Expense
+2024-02-10,Client Payment - Acme Ltd,,5000.00,Income
+2024-02-12,Software Subscription - Adobe,Software,54.99,Expense
+2024-02-14,Marketing - Facebook Ads,Marketing,300.00,Expense
+2024-02-18,Utilities - Internet,Utilities,45.00,Expense
+2024-02-20,Client Payment - Epsilon Ltd,,1950.00,Income
+2024-02-22,office supplies - notebooks,Office,22.50,Expense
+2024-02-25,Software Subscription - Xero,Software,35.00,Expense
+2024-02-28,Training - Online Course,Training,199.00,Expense
+2024-03-01,Client Payment - Zeta Corp,,6500.00,Income
+2024-03-04,Office Supplies - Desk Organiser,Office,45.00,Expense
+2024-03-06,Travel - Taxi Receipts,Travel,62.40,Expense
+2024-03-08,Rent - March,Rent,1500.00,Expense
+2024-03-10,Marketing - LinkedIn Ads,Marketing,450.00,Expense
+2024-03-12,Client Payment - Beta Corp,,3200.00,Income
+2024-03-15,Software Subscription - Adobe,Software,54.99,Expense
+2024-03-18,Utilities - Electricity,Utilities,198.70,Expense
+2024-03-20,Client Payment - Acme Ltd,,5000.00,Income
+2024-03-22,Software Subscription - Xero,Software,35.00,Expense
+2024-03-25,Training - Conference Fee,Training,350.00,Expense
+2024-03-28,office supplies - coffee machine,Office,89.00,Expense
+2024-03-30,Utilities - Internet,Utilities,45.00,Expense
