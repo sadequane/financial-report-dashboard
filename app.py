@@ -360,7 +360,7 @@ if uploaded:
                 "Expenses (£)"  : "£{:,.2f}",
                 "Net Profit (£)": "£{:,.2f}",
                 "Margin (%)"    : "{:.1f}%",
-            }).applymap(
+            }).map(
                 lambda v: "color: green; font-weight: bold" if isinstance(v, float) and v > 0 else
                           "color: red;   font-weight: bold" if isinstance(v, float) and v < 0 else "",
                 subset=["Net Profit (£)"]
