@@ -161,9 +161,9 @@ def build_excel(df, monthly, category):
     margin    = (net / total_inc * 100) if total_inc else 0
 
     kpis = [
-        ("Total Income",   f"£{total_inc:,.2f}", "D5F5E3", "1E8449"),
-        ("Total Expenses", f"£{total_exp:,.2f}", "FADBD8", "C0392B"),
-        ("Net Profit",     f"£{net:,.2f}",       "D6E4F0", MID_BLUE),
+        ("Total Income",   f"€{total_inc:,.2f}", "D5F5E3", "1E8449"),
+        ("Total Expenses", f"€{total_exp:,.2f}", "FADBD8", "C0392B"),
+        ("Net Profit",     f"€{net:,.2f}",       "D6E4F0", MID_BLUE),
         ("Profit Margin",  f"{margin:.1f}%",      "F2F2F2", DARK_BLUE),
     ]
     ws.row_dimensions[4].height = 18
@@ -185,7 +185,7 @@ def build_excel(df, monthly, category):
     # Monthly table
     ws["A8"] = "Monthly Summary"
     ws["A8"].font = Font(name="Arial", bold=True, size=12, color=DARK_BLUE)
-    _hdr(ws, 9, ["Month", "Income (£)", "Expenses (£)", "Net Profit (£)", "Margin (%)"])
+    _hdr(ws, 9, ["Month", "Income (€)", "Expenses (€)", "Net Profit (€)", "Margin (%)"])
 
     for r, row in monthly.iterrows():
         er    = 10 + r
@@ -227,7 +227,7 @@ def build_excel(df, monthly, category):
     ws2["A1"].fill      = PatternFill("solid", fgColor=MID_BLUE)
     ws2["A1"].alignment = Alignment(horizontal="center", vertical="center")
     ws2.row_dimensions[1].height = 28
-    _hdr(ws2, 2, ["Date","Description","Category","Type","Amount (£)","Month"], bg=MID_BLUE)
+    _hdr(ws2, 2, ["Date","Description","Category","Type","Amount (€)","Month"], bg=MID_BLUE)
 
     for r, row in df.iterrows():
         er    = 3 + r
@@ -258,7 +258,7 @@ def build_excel(df, monthly, category):
     ws3["A1"].fill      = PatternFill("solid", fgColor=DARK_BLUE)
     ws3["A1"].alignment = Alignment(horizontal="center", vertical="center")
     ws3.row_dimensions[1].height = 28
-    _hdr(ws3, 2, ["Category","Total Spent (£)","% of Total"])
+    _hdr(ws3, 2, ["Category","Total Spent (€)","% of Total"])
 
     for r, row in category.iterrows():
         er    = 3 + r
@@ -283,7 +283,7 @@ def build_excel(df, monthly, category):
     chart = BarChart()
     chart.type  = "col"
     chart.title = "Expenses by Category"
-    chart.y_axis.title = "Amount (£)"
+    chart.y_axis.title = "Amount (€)"
     chart.style = 10; chart.width = 18; chart.height = 12
     data = Reference(ws3, min_col=2, min_row=2, max_row=2+len(category))
     cats = Reference(ws3, min_col=1, min_row=3, max_row=2+len(category))
@@ -340,9 +340,9 @@ if uploaded:
     # ── KPI metrics ──────────────────────────────────────────────────────
     st.markdown("### Summary")
     c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Total Income",   f"£{total_inc:,.2f}")
-    c2.metric("Total Expenses", f"£{total_exp:,.2f}")
-    c3.metric("Net Profit",     f"£{net:,.2f}")
+    c1.metric("Total Income",   f"€{total_inc:,.2f}")
+    c2.metric("Total Expenses", f"€{total_exp:,.2f}")
+    c3.metric("Net Profit",     f"€{net:,.2f}")
     c4.metric("Profit Margin",  f"{margin:.1f}%")
 
     st.markdown("---")
@@ -353,17 +353,17 @@ if uploaded:
     with col_left:
         st.markdown("### Monthly Summary")
         display_monthly = monthly[["Month","Total_Income","Total_Expenses","Net_Profit","Profit_Margin_%"]].copy()
-        display_monthly.columns = ["Month","Income (£)","Expenses (£)","Net Profit (£)","Margin (%)"]
+        display_monthly.columns = ["Month","Income (€)","Expenses (€)","Net Profit (€)","Margin (%)"]
         st.dataframe(
             display_monthly.style.format({
-                "Income (£)"    : "£{:,.2f}",
-                "Expenses (£)"  : "£{:,.2f}",
-                "Net Profit (£)": "£{:,.2f}",
+                "Income (€)"    : "€{:,.2f}",
+                "Expenses (€)"  : "€{:,.2f}",
+                "Net Profit (€)": "€{:,.2f}",
                 "Margin (%)"    : "{:.1f}%",
             }).map(
                 lambda v: "color: green; font-weight: bold" if isinstance(v, float) and v > 0 else
                           "color: red;   font-weight: bold" if isinstance(v, float) and v < 0 else "",
-                subset=["Net Profit (£)"]
+                subset=["Net Profit (€)"]
             ),
             use_container_width=True,
             hide_index=True,
@@ -372,10 +372,10 @@ if uploaded:
     with col_right:
         st.markdown("### Expenses by Category")
         display_cat = category.copy()
-        display_cat.columns = ["Category","Total Spent (£)","% of Total"]
+        display_cat.columns = ["Category","Total Spent (€)","% of Total"]
         st.dataframe(
             display_cat.style.format({
-                "Total Spent (£)": "£{:,.2f}",
+                "Total Spent (€)": "€{:,.2f}",
                 "% of Total"     : "{:.1f}%",
             }),
             use_container_width=True,
@@ -388,7 +388,7 @@ if uploaded:
     st.markdown("### All Transactions")
     display_tx = df[["Date","Description","Category","Type","Amount"]].copy()
     display_tx["Date"]   = display_tx["Date"].dt.strftime("%d/%m/%Y")
-    display_tx["Amount"] = display_tx["Amount"].map("£{:,.2f}".format)
+    display_tx["Amount"] = display_tx["Amount"].map("€{:,.2f}".format)
     st.dataframe(display_tx, use_container_width=True, hide_index=True)
 
     st.markdown("---")
